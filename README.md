@@ -4,7 +4,7 @@
 
 🛠️ 적용 알고리즘 (Algorithm)선택한 알고리즘: Token Bucket (토큰 버킷)   작동 원리:시스템은 분당 10개의 토큰을 발급합니다.  요청이 들어올 때마다 버킷에서 토큰 1개를 소비합니다.  버킷이 비어 있으면(토큰이 없으면) 즉시 429 Too Many Requests 응답을 보내 시스템 부하를 차단합니다.  
 
-#💻 실습 코드 (Code)Python
+💻 실습 코드 (Code)Python
 
 from fastapi import FastAPI, Request
 from slowapi import Limiter
