@@ -7,19 +7,27 @@
 💻 실습 코드 (Code)Python
 
 from fastapi import FastAPI, Request
+
 from slowapi import Limiter
+
 from slowapi.util import get_remote_address
 
 # 1. 운영자 설정: 접속자 IP 기반의 Limiter 인스턴스 생성 [cite: 440]
+
 limiter = Limiter(key_func=get_remote_address)
+
 app = FastAPI()
+
 app.state.limiter = limiter
 
 @app.get("/hello")
 
 # 2. 운영 통제: 분당 10회 호출 제한 적용 [cite: 444]
+
 @limiter.limit("10/minute")
+
 async def hello(request: Request):
+
     return {"message": "Hello World"}
 
 🧪 테스트 방법 (Test Method)환경 구축: pip install fastapi uvicorn slowapi로 필요 패키지 설치.  서버 실행: uvicorn main:app --reload 커맨드로 로컬 서버 기동.  부하 테스트: 브라우저 혹은 터미널에서 http://127.0.0.1:8000/hello 주소를 1분 이내에 11회 이상 연속 호출합니다.  
