@@ -33,6 +33,8 @@ async def hello(request: Request):
 
     return {"message": "Hello World"}
 
-# 🧪테스트 방법 (Test Method)환경 구축: pip install fastapi uvicorn slowapi로 필요 패키지 설치.  서버 실행: uvicorn main:app --reload 커맨드로 로컬 서버 기동.  부하 테스트: 브라우저 혹은 터미널에서 http://127.0.0.1:8000/hello 주소를 1분 이내에 11회 이상 연속 호출합니다.  
+# 🧪테스트 방법 (Test Method)환경 구축: 
+pip install fastapi uvicorn slowapi로 필요 패키지 설치.  서버 실행: uvicorn main:app --reload 커맨드로 로컬 서버 기동.  부하 테스트: 브라우저 혹은 터미널에서 http://127.0.0.1:8000/hello 주소를 1분 이내에 11회 이상 연속 호출합니다.  
 
-# 📊실행 결과 (Rate Limit 확인)1~10회 호출: 정상적으로 {"message": "Hello World"} 메시지 반환 (HTTP 200 OK).11회 호출 시: 서버가 요청을 거부하며 아래와 같은 에러 응답을 반환합니다.  Response Body: {"detail": "10 per 1 minute"}Status Code: 429 Too Many Requests (터미널 로그에서 확인 가능).
+# 📊실행 결과 (Rate Limit 확인)1~10회 호출: 
+정상적으로 {"message": "Hello World"} 메시지 반환 (HTTP 200 OK).11회 호출 시: 서버가 요청을 거부하며 아래와 같은 에러 응답을 반환합니다.  Response Body: {"detail": "10 per 1 minute"}Status Code: 429 Too Many Requests (터미널 로그에서 확인 가능).
